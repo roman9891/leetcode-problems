@@ -42,7 +42,9 @@ path is a valid absolute Unix path.
 var simplifyPath = function (path) {
   const regex = /\/+/g;
   let upPath = path.replace(/\.+/g, "").replace(regex, "/");
+
   if (upPath.endsWith("/") && upPath.length > 1) upPath = upPath.slice(0, -1);
+
   return upPath;
 };
 
@@ -50,17 +52,21 @@ console.log(simplifyPath("/../"));
 console.log(simplifyPath("/home//foo/"));
 
 /*
+Submitted
+Fail case.q
 Input:
 "/a/./b/../../c/"
 Output:
 "/a/b/c"
 Expected:
 "/c"
+Discussion based solution: stack based
 */
 
 var simplifyPath = function (path) {
   // Split path by matching /./ or /
-  let pathArr = path.split(/\/\.\/|\/+/);
+  const regex = /\/\.\/|\/+/;
+  let pathArr = path.split(regex);
   /* 
     Eg: "/a/../../b/../c//.//".split(/\/\.\/|\/+/)
     Gives us  ['', 'a', '..', '..', 'b', '..', 'c', '.', '']
