@@ -27,6 +27,20 @@ Constraints:
  * @return {boolean}
  */
 
+//Attempt #2
+// var containsDuplicate = (nums) => {
+//   if (!(nums.length > 2)) {
+//     for (let i = nums.length - 1; i >= 0; i--) {
+//       console.log("i:", i, "nums[i]:", nums[i]);
+//       nums.pop();
+//       for (let j = nums.length - 2; j >= 0; j--) {
+//         console.log("j:", j, "nums[j]:", nums[j]);
+//         if (nums[i] === nums[j]) return true;
+//       }
+//     }
+//   } else return false;
+// };
+
 //1st attempt
 //var containsDuplicate = function (nums) {
 //   for(let i = 0; i <nums.length;i++)
@@ -41,8 +55,10 @@ Constraints:
 //   }
 //   return false;
 // };
-
-//console.log(containsDuplicate([1, 2, 3, 1])); //true
-// console.log(containsDuplicate([1, 2, 3, 4])); //true
-// console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); //true
-console.log(containsDuplicate([1, 2, 3, 4]));
+const debug = () => {
+  console.log(containsDuplicate([1, 2, 3, 1])); //true
+  console.log(containsDuplicate([1, 2, 3, 4])); //true
+  console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); //true
+  console.log(containsDuplicate([1, 2, 3, 4])); //false
+};
+debug();
