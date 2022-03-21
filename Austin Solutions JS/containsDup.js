@@ -26,4 +26,23 @@ Constraints:
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function (nums) {};
+
+//1st attempt
+//var containsDuplicate = function (nums) {
+//   for(let i = 0; i <nums.length;i++)
+
+//     for (let j = 0; j < nums.length; j--) {
+//       if (curNum === nums[j] && !(i == j)) {
+//         console.log(`i:`, i, `j:`, j);
+//         return true;
+//       } else continue;
+//     }
+
+//   }
+//   return false;
+// };
+
+//console.log(containsDuplicate([1, 2, 3, 1])); //true
+// console.log(containsDuplicate([1, 2, 3, 4])); //true
+// console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); //true
+console.log(containsDuplicate([1, 2, 3, 4]));
