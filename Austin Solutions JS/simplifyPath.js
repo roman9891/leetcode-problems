@@ -66,7 +66,7 @@ Discussion based solution: stack based
 var simplifyPath = function (path) {
   // Split path by matching /./ or /
   const regex = /\/\.\/|\/+/;
-  let pathArr = path.split(regex);
+  let upPath = path.split(regex);
   /* 
     Eg: "/a/../../b/../c//.//".split(/\/\.\/|\/+/)
     Gives us  ['', 'a', '..', '..', 'b', '..', 'c', '.', '']
@@ -74,16 +74,16 @@ var simplifyPath = function (path) {
 
   //Stack to keep track of path
   let stack = [];
-  for (let i = 0; i < pathArr.length; i++) {
-    if (pathArr[i]) {
+  for (let i = 0; i < upPath.length; i++) {
+    if (upPath[i]) {
       //i.e out pathArr !== ""
       /* 
             ".." means that we have to go back so we do pop
             */
-      if (pathArr[i] === "..") stack.pop();
+      if (upPath[i] === "..") stack.pop();
       /* An empty . in the end is not a valid path so if we do not encounter "."
             that means that our path is valid so we push it to stack
-            */ else if (pathArr[i] !== ".") stack.push(pathArr[i]);
+            */ else if (upPath[i] !== ".") stack.push(upPath[i]);
     }
   }
   // In the end we return our path that we have in stack
