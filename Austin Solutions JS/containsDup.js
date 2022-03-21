@@ -1,5 +1,5 @@
 /*
-217. Contains Duplicate-Easy
+217. Contains Duplicate-Easy-03/21/2022 14:43	Accepted	1530 ms	47.5 MB	javascript
 
 Given an integer array nums, 
 return true if any value appears at least twice in the array, 
@@ -26,6 +26,21 @@ Constraints:
  * @param {number[]} nums
  * @return {boolean}
  */
+//Accepted Solution
+const containsDuplicate = (nums) => {
+  if (nums.length === 1) return false;
+  else {
+    //console.log(nums);
+    for (let i = 0; i < nums.length; i++) {
+      //console.log("i:", nums[i]);
+      for (let j = i + 1; j < nums.length; j++) {
+        //console.log("j:", nums[j]);
+        if (nums[i] === nums[j]) return true;
+      }
+    }
+  }
+  return false;
+};
 
 //Attempt #2
 // var containsDuplicate = (nums) => {
@@ -56,9 +71,9 @@ Constraints:
 //   return false;
 // };
 const debug = () => {
-  console.log(containsDuplicate([1, 2, 3, 1])); //true
+  console.log(containsDuplicate([1, 2, 3, 6])); //true
   console.log(containsDuplicate([1, 2, 3, 4])); //true
-  console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); //true
+  console.log(containsDuplicate([1, 3, 3, 3, 3, 4, 3, 2, 4, 2])); //true
   console.log(containsDuplicate([1, 2, 3, 4])); //false
 };
 debug();
