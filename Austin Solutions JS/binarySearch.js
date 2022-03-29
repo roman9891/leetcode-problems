@@ -28,7 +28,12 @@ Constraints:
  * @param {number} target
  * @return {number}
  */
-var search = function (nums, target) {
+var search = function (nums, target) {};
+search([-1, 0, 3, 5, 9, 12], 9);
+search([-1, 0, 3, 5, 9, 12], 2);
+
+/*
+Method 1 - fail -not in O log n
   //variable equal to target present
   //intitalize counter at 0
   //while loop
@@ -39,6 +44,4 @@ var search = function (nums, target) {
   //return statement
   //if line 32 variable true return counter to indicate target position
   //else if variable is false return -1 to indicate target not present
-};
-search([-1, 0, 3, 5, 9, 12], 9);
-search([-1, 0, 3, 5, 9, 12], 2);
+*/
