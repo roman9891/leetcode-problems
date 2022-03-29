@@ -1,5 +1,5 @@
 /*
-287. Find the Duplicate Number -Medium
+287. Find the Duplicate Number - Medium - 03/29/2022 10:48	Accepted	202 ms	61.6 MB	javascript
   Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
   There is only one repeated number in nums, return this repeated number.
 Return:
