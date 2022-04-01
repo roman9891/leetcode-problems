@@ -22,8 +22,8 @@ Notes:
   rules for brackets:
    you can open a new bracket any time,
     but the next closing bracket needs to match the previous unclosed bracket
-Psuedo:
-..validate string func
+
+Psuedo:..validate string func
 intitialize a variable called evaluating set to true
   first evaluate if s.length is even,
     if even continue 
@@ -54,4 +54,59 @@ initiliaze incement value
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function (s) {};
+var isValid = function (s) {
+  console.log({ s });
+  let condition = {
+    evaluating: true,
+    evaluation: true,
+  };
+  if (s.length % 2 === 1) {
+    condition.evaluating = false;
+    condition.evaluation = false;
+  }
+  const objTrk = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  };
+  let cache = [];
+  let i = 0;
+  console.log({ cache }, { i });
+  while (condition.evaluating) {
+    console.log("hello");
+    evaluateStr = (cache, s, i) => {
+      console.log({ i });
+      console.log({ cache });
+      return (i = s.length
+        ? () => {
+            condition.evaluating = false;
+          }
+        : objTrk.keys.includes(s[i])
+        ? () => {
+            cache.push(s[i]);
+            i++;
+            evaluateStr(cache, s, i);
+          }
+        : objTrk[cache[cache.length - 1]] === s[i]
+        ? () => {
+            cache.pop();
+            i++;
+            evaluateStr(cache, s, i);
+          }
+        : () => {
+            condition.evaluating = false;
+            condition.evaluation = false;
+          });
+    };
+  }
+  // if cache isnt empty or i doesnt equal length-1
+  if (!cache === [] || !i === s.length - 1) {
+    condition.evaluation = false;
+  }
+  return condition.evaluation;
+};
+
+isValid("(((()))"); //false
+isValid("({}{})"); //true
+isValid("()[]{}"); //true
+isValid("("); //false
