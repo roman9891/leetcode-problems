@@ -45,11 +45,43 @@ play game
     track remander in champion
     next round
 Return champion
-
 */
 
 /**
  * @param {number[]} stones
  * @return {number}
  */
-var lastStoneWeight = function (stones) {};
+
+var lastStoneWeight = function (stones) {
+  if (stones.length === 1) {
+    console.log("stones.length === 1");
+    return stones[0];
+  }
+  //sort the stones heaviest to lightest
+  const sortedStones = stones.sort((a, b) => b - a);
+  console.log({ sortedStones });
+  //set champ int as stones[0] after sort
+  let champ = sortedStones[0];
+  //loop over for challengers
+  for (let i = 1; i < sortedStones.length; i++) {
+    //find challenger next heaviest stones
+    let challenger = sortedStones[i];
+    console.log({ challenger });
+    //subtract challenger from champion and keep remainder as champ
+    if (challenger > champ) {
+      champ = challenger - champ;
+    } else {
+      champ -= challenger;
+    }
+    console.log({ champ });
+  }
+  // Return champion
+  console.log("return");
+  return champ;
+};
+//first if stones is only 1 stone
+//console.log(lastStoneWeight([1]), "[1]"); //return = 1 - PASSED
+//second plays game
+//console.log(lastStoneWeight([1, 2, 3, 4]), "[1,2,3,4]"); //return = 0 - PASSED
+// Example 1 -[2,7,4,1,8,1] - expected output-1
+console.log(lastStoneWeight([2, 7, 4, 1, 8, 1])); //return = 1 -
