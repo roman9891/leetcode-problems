@@ -1,5 +1,5 @@
 /*
-1046. Last Stone Weight - Easy
+1046. Last Stone Weight - Easy - 04/07/2022 16:36	Accepted	80 ms	43.8 MB	javascript
   Parameter:
     You are given an array of integers stones 
       where stones[i] is the weight of the ith stone.
@@ -53,35 +53,40 @@ Return champion
  */
 
 var lastStoneWeight = function (stones) {
-  if (stones.length === 1) {
-    console.log("stones.length === 1");
-    return stones[0];
-  }
-  //sort the stones heaviest to lightest
-  const sortedStones = stones.sort((a, b) => b - a);
-  console.log({ sortedStones });
-  //set champ int as stones[0] after sort
-  let champ = sortedStones[0];
-  //loop over for challengers
-  for (let i = 1; i < sortedStones.length; i++) {
-    //find challenger next heaviest stones
-    let challenger = sortedStones[i];
-    console.log({ challenger });
-    //subtract challenger from champion and keep remainder as champ
-    if (challenger > champ) {
-      champ = challenger - champ;
-    } else {
-      champ -= challenger;
+  let champ = 0;
+  let playing = true;
+  while (playing) {
+    if (stones.length <= 1) {
+      if (stones.length === 1) {
+        champ = stones[0];
+        break;
+      } else if (stones.length === 0) {
+        champ = 0;
+        break;
+      }
     }
-    console.log({ champ });
+    let sort = stones.sort((a, b) => b - a);
+    let x = sort[0];
+    let y = sort[1];
+    champ = x - y;
+    if (champ >= 1) {
+      stones.push(champ);
+      stones.shift();
+      stones.shift();
+    } else if (champ === 0) {
+      stones.shift();
+      stones.shift();
+    }
   }
-  // Return champion
-  console.log("return");
+  console.log("return", { champ });
   return champ;
 };
+
 //first if stones is only 1 stone
 //console.log(lastStoneWeight([1]), "[1]"); //return = 1 - PASSED
 //second plays game
 //console.log(lastStoneWeight([1, 2, 3, 4]), "[1,2,3,4]"); //return = 0 - PASSED
 // Example 1 -[2,7,4,1,8,1] - expected output-1
-console.log(lastStoneWeight([2, 7, 4, 1, 8, 1])); //return = 1 -
+console.log(lastStoneWeight([2, 7, 4, 1, 8, 1])); //return = 1 - Passed
+//Fail- Expected = 3; Output = 5
+lastStoneWeight([7, 6, 7, 6, 9]); //return = 3
